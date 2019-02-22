@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Update RDS database with stats on completed achievements
+Globals:
+  Api:
+    Cors:
+      AllowHeaders: '''*'''
+      AllowMethods: '''*'''
+      AllowOrigin: '''*'''
+    EndpointConfiguration: EDGE
+Outputs:
+  PopulateAchievementStatsApi:
+    Description: URL to post achievement stats
+    Export:
+      Name: PopulateAchievementStatsApi
+    Value:
+      Fn::Sub: https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/achievementstats
+Resources:
+  PopulateAchievementStatsFunction:
+    Properties:
+      CodeUri: s3://com.zerotoheroes.artifact/5c67095c22459910952598a6916d7dcd
+      Events:
+        GetResource:
+          Properties:
+            Method: any
+            Path: /{proxy+}
+          Type: Api
+      Handler: com.zerotoheroes.StreamLambdaHandler::handleRequest
+      MemorySize: 512
+      Policies:
+      - AWSLambdaVPCAccessExecutionRole
+      - SecretsManagerReadWrite
+      Runtime: java8
+      Timeout: 90
+    Type: AWS::Serverless::Function
+Transform: AWS::Serverless-2016-10-31
