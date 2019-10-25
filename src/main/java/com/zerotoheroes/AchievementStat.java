@@ -25,6 +25,7 @@ import java.util.Date;
         @Index(columnList = "type", name = "ix_type"),
         @Index(columnList = "cardId", name = "ix_cardId"),
         @Index(columnList = "numberOfCompletions", name = "ix_numberOfCompletions"),
+        @Index(columnList = "reviewId", name = "ix_reviewId"),
 })
 @AllArgsConstructor()
 @Builder
@@ -46,6 +47,7 @@ public final class AchievementStat {
     private String type;
     private String cardId;
     private int numberOfCompletions;
+    private String reviewId;
 
     private AchievementStat() {
         // Needed by JPA

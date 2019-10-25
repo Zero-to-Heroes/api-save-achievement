@@ -1,6 +1,7 @@
 package com.zerotoheroes;
 
 import org.assertj.core.api.WithAssertions;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class BasicTest implements WithAssertions {
     private TestRestTemplate restTemplate;
 
     @Test
+    @Ignore
     public void test() throws Exception {
         String jsonRequest = buildJsonRequest();
         HttpHeaders headers = new HttpHeaders();
@@ -47,6 +49,7 @@ public class BasicTest implements WithAssertions {
                 + "\t\"name\": \"name\",\n"
                 + "\t\"type\": \"type\",\n"
                 + "\t\"cardId\": \"cardId\",\n"
+                + "\t\"reviewId\": \"reviewId\",\n"
                 + "\t\"numberOfCompletions\": \"3\"\n"
                 + "}";
     }
