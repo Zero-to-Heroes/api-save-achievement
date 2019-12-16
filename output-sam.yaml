@@ -17,7 +17,7 @@ Outputs:
 Resources:
   PopulateAchievementStatsFunction:
     Properties:
-      CodeUri: s3://com.zerotoheroes.artifact/5c67095c22459910952598a6916d7dcd
+      CodeUri: s3://com.zerotoheroes.artifact/7059bbc1694fe3e7e20f64c8044a2908
       Events:
         GetResource:
           Properties:
