@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: Update RDS database with stats on completed achievements
 
@@ -18,10 +18,10 @@ Resources:
       Handler: com.zerotoheroes.StreamLambdaHandler::handleRequest
       Runtime: java8
       CodeUri: target/api-save-achievements-1.0-SNAPSHOT.jar
-      MemorySize: 512
+      MemorySize: 256
       Policies:
-      - AWSLambdaVPCAccessExecutionRole
-      - SecretsManagerReadWrite
+        - AWSLambdaVPCAccessExecutionRole
+        - SecretsManagerReadWrite
       Timeout: 90
       Events:
         GetResource:
@@ -33,6 +33,6 @@ Resources:
 Outputs:
   PopulateAchievementStatsApi:
     Description: URL to post achievement stats
-    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/achievementstats'
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/achievementstats"
     Export:
       Name: PopulateAchievementStatsApi
